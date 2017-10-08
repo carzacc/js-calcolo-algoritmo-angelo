@@ -218,7 +218,7 @@ partita=(squadra1,squadra2,goal1,goal2) => {
     Benevento.aggiungipartita(goal2,goal1);
   }
 }
-partite=numeropartite=> {
+function partite(numeropartite) {
   let soloquarta=0;
   let finoquinta=0;
   if(numeropartite<5) soloquarta=1
@@ -289,7 +289,7 @@ partite=numeropartite=> {
     }
   }
 }
-generaarray=() => {
+function generaarray() {
   arr[inter]=Inter.getPunti()
   arr[juve]=Juve.getPunti()
   arr[milan]=Milan.getPunti()
