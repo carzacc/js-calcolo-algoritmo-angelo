@@ -61,7 +61,7 @@ var Squadra = class Squadra {
       return this.punti
     }
     getPuntiTrad()  {
-      return this.puntitrad
+      return this.puntiTrad
     }
   }
 
@@ -273,21 +273,24 @@ partite=(numeropartite)=> {
       partita("Milan","Spal",2,0);
       partita("Udinese","Torino",2,3);
       partita("Verona", "Sampdoria",0,0);
-    if(!finoquinta)
-    {
-      partita("Roma","Udinese",3,1);
-      partita("Spal","Napoli",2,3);
-      partita("juventus","Torino",4,0);
-      partita("Sampdoria","Milan",2,0);
-      partita("Cagliari","Chievo",0,2);
-      partita("Crotone", "Benevento",2,0);
-      partita("Verona","Lazio",0,3);
-      partita("Inter","Genoa",1,0);
-      partita("Sassuolo", "Bologna",0,1);
-      partita("Fiorentina","Atalanta",1,1);
-    }
+      if(!finoquinta)
+      {
+        partita("Roma","Udinese",3,1);
+        partita("Spal","Napoli",2,3);
+        partita("juventus","Torino",4,0);
+        partita("Sampdoria","Milan",2,0);
+        partita("Cagliari","Chievo",0,2);
+        partita("Crotone", "Benevento",2,0);
+        partita("Verona","Lazio",0,3);
+        partita("Inter","Genoa",1,0);
+        partita("Sassuolo", "Bologna",0,1);
+        partita("Fiorentina","Atalanta",1,1);
+      }
     }
 }
-partite(5)
-document.write("I punti sono")
-document.write(Inter.getPunti())
+(function() {
+  partite(5);
+  document.write("I punti sono");
+  document.write(Inter.getPuntiTrad());
+}
+).call(this)

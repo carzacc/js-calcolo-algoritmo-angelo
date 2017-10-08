@@ -54,7 +54,7 @@ var Squadra = class Squadra {
     return this.punti;
   }
   getPuntiTrad() {
-    return this.puntitrad;
+    return this.puntiTrad;
   }
 };
 
@@ -270,6 +270,8 @@ partite = numeropartite => {
     }
   }
 };
-partite(5);
-document.write("I punti sono");
-document.write(Inter.getPunti());
+(function () {
+  partite(5);
+  document.write("I punti sono");
+  document.write(Inter.getPuntiTrad());
+}).call(this);
