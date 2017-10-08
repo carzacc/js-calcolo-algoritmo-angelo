@@ -21,6 +21,7 @@ const bologna = 19;
 const quotaCS = 2.5;
 const quotaGS = 1.5;
 const quotaGF = 1.3;
+var arr = new Array(20);
 
 string = stringa => {
   return stringa;
@@ -270,8 +271,19 @@ partite = numeropartite => {
     }
   }
 };
+generaarray = () => {
+  arr[inter] = Inter.getPunti();
+  arr[juve] = Juve.getPunti();
+  arr[milan] = Milan.getPunti();
+  arr[sampdoria] = Sampdoria.getPunti();
+  arr[torino] = Torino.getPunti();
+};
 (function () {
   partite(5);
+  generaarray();
+  for (let value of arr) {
+    console.log(value);
+  }
   document.write("I punti sono");
   document.write(Inter.getPuntiTrad());
 }).call(this);

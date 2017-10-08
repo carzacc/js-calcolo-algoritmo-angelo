@@ -21,6 +21,7 @@ const bologna=19
 const quotaCS=2.5
 const quotaGS=1.5
 const quotaGF=1.3
+var arr = new Array(20)
 
 string=(stringa) => {
   return stringa
@@ -217,7 +218,7 @@ partita=(squadra1,squadra2,goal1,goal2) => {
     Benevento.aggiungipartita(goal2,goal1);
   }
 }
-partite=(numeropartite)=> {
+partite=numeropartite=> {
   let soloquarta=0;
   let finoquinta=0;
   if(numeropartite<5) soloquarta=1
@@ -288,9 +289,20 @@ partite=(numeropartite)=> {
     }
   }
 }
+generaarray=() => {
+  arr[inter]=Inter.getPunti()
+  arr[juve]=Juve.getPunti()
+  arr[milan]=Milan.getPunti()
+  arr[sampdoria]=Sampdoria.getPunti()
+  arr[torino]=Torino.getPunti()
+}
 (function() {
-  partite(5);
+  partite(5)
+  generaarray()
+  for(let value of arr)
+  {
+    console.log(value)
+  }
   document.write("I punti sono");
   document.write(Inter.getPuntiTrad());
-}
-).call(this)
+}).call(this)
