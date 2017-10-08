@@ -263,18 +263,18 @@ partite=(numeropartite)=> {
     partita("Genoa","Lazio",2,3);
     if(!soloquarta)
     {
-    partita("Bologna","Inter",1,1);
-    partita("Benevento","Roma",0,4);
-    partita("Atalanta","Crotone",5,1);
-    partita("Cagliari","Sassuolo",0,1);
-    partita("Genoa","Chievo",1,1);
-    partita("juventus", "Fiorentina",1,0);
-    partita("Lazio","Napoli",1,4);
-    partita("Milan","Spal",2,0);
-    partita("Udinese","Torino",2,3);
-    partita("Verona", "Sampdoria",0,0);
-      if(!finoquinta)
-      {
+      partita("Bologna","Inter",1,1);
+      partita("Benevento","Roma",0,4);
+      partita("Atalanta","Crotone",5,1);
+      partita("Cagliari","Sassuolo",0,1);
+      partita("Genoa","Chievo",1,1);
+      partita("juventus", "Fiorentina",1,0);
+      partita("Lazio","Napoli",1,4);
+      partita("Milan","Spal",2,0);
+      partita("Udinese","Torino",2,3);
+      partita("Verona", "Sampdoria",0,0);
+    if(!finoquinta)
+    {
       partita("Roma","Udinese",3,1);
       partita("Spal","Napoli",2,3);
       partita("juventus","Torino",4,0);
@@ -285,7 +285,7 @@ partite=(numeropartite)=> {
       partita("Inter","Genoa",1,0);
       partita("Sassuolo", "Bologna",0,1);
       partita("Fiorentina","Atalanta",1,1);
-        }
+    }
     }
 }
 partite(5)
