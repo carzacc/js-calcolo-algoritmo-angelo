@@ -1,3 +1,5 @@
+'use strict';
+
 const inter = 1;
 const juve = 2;
 const napoli = 3;
@@ -22,40 +24,37 @@ const quotaCS = 2.5;
 const quotaGS = 1.5;
 const quotaGF = 1.3;
 var arr = new Array(20);
-
-string = stringa => {
-  return stringa;
-};
+var sortedarr = new Array(20);
 
 var Squadra = class Squadra {
-  constructor(punti, puntiTrad) {
-    punti = 0;
-    puntiTrad = 0;
+  constructor() {
+    this.punti = 0;
+    this.puntiTrad = 0;
   }
   aggiungipartita(GFa, GSa) {
-    if (GFa > GSa) {
+    if (parseInt(GFa) > parseInt(GSa)) {
       this.puntiTrad = this.puntiTrad + 3;
     }
-    if (GFa == GSa) {
+    if (parseInt(GFa) == parseInt(GSa)) {
       this.puntiTrad = this.puntiTrad + 1;
     }
 
-    if (GSa == 0) {
+    if (parseInt(GSa) == 0) {
       this.punti = this.punti + quotaCS;
     } else {
-      if (GSa == 1) {
+      if (parseInt(GSa) == 1) {
         this.punti = this.punti + 1.5;
       }
     }
-    if (GFa > 0) {
+    if (parseInt(GFa) > 0) {
       this.punti = this.punti + 1.3;
     }
   }
   getPunti() {
-    return this.punti;
+    return parseFloat(this.punti);
   }
   getPuntiTrad() {
-    return this.puntiTrad;
+    return parseInt(this.puntiTrad);
   }
 };
 
@@ -80,133 +79,131 @@ var Sassuolo = new Squadra();
 var Cagliari = new Squadra();
 var Bologna = new Squadra();
 
-partita = (squadra1, squadra2, goal1, goal2) => {
-  if (squadra1 == string("Inter")) {
+function partita(squadra1, squadra2, goal1, goal2) {
+  if (squadra1 == "Inter") {
     Inter.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Napoli")) {
+  if (squadra1 == "Napoli") {
     Napoli.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("juventus") || squadra1 == string("juve")) {
+  if (squadra1 == "juventus" || squadra1 == "juve") {
     Juve.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Lazio")) {
+  if (squadra1 == "Lazio") {
     Lazio.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Milan")) {
+  if (squadra1 == "Milan") {
     Milan.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Torino")) {
+  if (squadra1 == "Torino") {
     Torino.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Sampdoria")) {
+  if (squadra1 == "Sampdoria") {
     Sampdoria.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Roma")) {
+  if (squadra1 == "Roma") {
     Roma.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Fiorentina")) {
+  if (squadra1 == "Fiorentina") {
     Fiorentina.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Cagliari")) {
+  if (squadra1 == "Cagliari") {
     Cagliari.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Atalanta")) {
+  if (squadra1 == "Atalanta") {
     Atalanta.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("ChievoVerona") || squadra1 == string("Chievo") || squadra1 == string("Chievoverona")) {
+  if (squadra1 == "ChievoVerona" || squadra1 == "Chievo" || squadra1 == "Chievoverona") {
     Chievo.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Bologna")) {
+  if (squadra1 == "Bologna") {
     Bologna.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Spal")) {
+  if (squadra1 == "Spal") {
     Spal.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Udinese")) {
+  if (squadra1 == "Udinese") {
     Udinese.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Genoa")) {
+  if (squadra1 == "Genoa") {
     Genoa.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Sassuolo")) {
+  if (squadra1 == "Sassuolo") {
     Sassuolo.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Crotone")) {
+  if (squadra1 == "Crotone") {
     Crotone.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Hellas Verona") || squadra1 == string("Hellas") || squadra1 == string("Verona")) {
+  if (squadra1 == "Hellas Verona" || squadra1 == "Hellas" || squadra1 == "Verona") {
     Hellas.aggiungipartita(goal1, goal2);
   }
-  if (squadra1 == string("Benevento")) {
+  if (squadra1 == "Benevento") {
     Benevento.aggiungipartita(goal1, goal2);
   }
-  if (squadra2 == string("Inter")) {
+  if (squadra2 == "Inter") {
     Inter.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Napoli")) {
+  if (squadra2 == "Napoli") {
     Napoli.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("juventus") || squadra2 == string("juve")) {
+  if (squadra2 == "juventus" || squadra2 == "juve") {
     Juve.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Lazio")) {
+  if (squadra2 == "Lazio") {
     Lazio.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Milan")) {
+  if (squadra2 == "Milan") {
     Milan.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Torino")) {
+  if (squadra2 == "Torino") {
     Torino.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Sampdoria")) {
+  if (squadra2 == "Sampdoria") {
     Sampdoria.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Roma")) {
+  if (squadra2 == "Roma") {
     Roma.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Fiorentina")) {
+  if (squadra2 == "Fiorentina") {
     Fiorentina.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Cagliari")) {
+  if (squadra2 == "Cagliari") {
     Cagliari.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Atalanta")) {
+  if (squadra2 == "Atalanta") {
     Atalanta.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("ChievoVerona") || squadra2 == string("Chievo") || squadra2 == string("Chievoverona")) {
+  if (squadra2 == "ChievoVerona" || squadra2 == "Chievo" || squadra2 == "Chievoverona") {
     Chievo.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Bologna")) {
+  if (squadra2 == "Bologna") {
     Bologna.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Spal")) {
+  if (squadra2 == "Spal") {
     Spal.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Udinese")) {
+  if (squadra2 == "Udinese") {
     Udinese.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Genoa")) {
+  if (squadra2 == "Genoa") {
     Genoa.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Sassuolo")) {
+  if (squadra2 == "Sassuolo") {
     Sassuolo.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Crotone")) {
+  if (squadra2 == "Crotone") {
     Crotone.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Hellas Verona") || squadra2 == string("Hellas") || squadra2 == string("Verona")) {
+  if (squadra2 == "Hellas Verona" || squadra2 == "Hellas" || squadra2 == "Verona") {
     Hellas.aggiungipartita(goal2, goal1);
   }
-  if (squadra2 == string("Benevento")) {
+  if (squadra2 == "Benevento") {
     Benevento.aggiungipartita(goal2, goal1);
   }
-};
-partite = numeropartite => {
+}
+(function () {
   let soloquarta = 0;
   let finoquinta = 0;
-  if (numeropartite < 5) soloquarta = 1;
-  if (numeropartite < 6) finoquinta = 1;
   partita("juventus", "Cagliari", 3, 0);
   partita("Verona", "Napoli", 1, 3);
   partita("Atalanta", "Roma", 0, 1);
@@ -270,20 +267,56 @@ partite = numeropartite => {
       partita("Fiorentina", "Atalanta", 1, 1);
     }
   }
-};
-generaarray = () => {
+}).call(this);
+(function () {
   arr[inter] = Inter.getPunti();
   arr[juve] = Juve.getPunti();
   arr[milan] = Milan.getPunti();
   arr[sampdoria] = Sampdoria.getPunti();
   arr[torino] = Torino.getPunti();
-};
+  arr[roma] = Roma.getPunti();
+  arr[benevento] = Benevento.getPunti();
+  arr[hellas] = Hellas.getPunti();
+  arr[atalanta] = Atalanta.getPunti();
+  arr[spal] = Spal.getPunti();
+  arr[crotone] = Crotone.getPunti();
+  arr[chievo] = Chievo.getPunti();
+  arr[fiorentina] = Fiorentina.getPunti();
+  arr[napoli] = Napoli.getPunti();
+  arr[bologna] = Bologna.getPunti();
+  arr[cagliari] = Cagliari.getPunti();
+  arr[genoa] = Genoa.getPunti();
+  arr[sassuolo] = Sassuolo.getPunti();
+  arr[lazio] = Lazio.getPunti();
+  arr[udinese] = Udinese.getPunti();
+  sortedarr = Array.from(arr);
+  sortedarr.sort();
+  sortedarr.reverse();
+}).call(this);
 (function () {
-  partite(5);
-  generaarray();
-  for (let value of arr) {
-    console.log(value);
+  for (let value of sortedarr) {
+    if (value == arr[inter]) {
+      document.write("Punti Inter: ");
+    }
+    if (value == arr[juve]) {
+      document.write("Punti Juve: ");
+    }
+    if (value == arr[milan]) {
+      document.write("Punti Milan: ");
+    }
+    if (value == arr[sampdoria]) {
+      document.write("Punti Sampdoria: ");
+    }
+    if (value == arr[torino]) {
+      document.write("Punti Torino: ");
+    }
+    if (value == arr[roma]) {
+      document.write("Punti Roma: ");
+    }
+    if (value == arr[benevento]) {
+      document.write("Punti Benevento: ");
+    }
+    document.write(value);
+    document.write("\n");
   }
-  document.write("I punti sono");
-  document.write(Inter.getPuntiTrad());
 }).call(this);
