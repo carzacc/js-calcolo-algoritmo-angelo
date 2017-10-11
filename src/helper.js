@@ -98,35 +98,32 @@ function partite(giornata) {
   }).call(this);
 }
 
+function failista()  {
+  console.log("dentro lista")
+  let lista = document.createElement("ul");
+  for(let i = 0;i<sortedarr.length;i++) {
+    let elemento = document.createElement('li');
+    //da mettere nome squadra
+    elemento.appendChild(document.createTextNode(sortedarr[i]));
+    lista.appendChild(elemento);
+  }
+  return lista;
+}
 function avviaprogramma() {
-  let giornata=parseInt(document.getElementById("giornata").value);
-  partite(giornata)
-
-  (function () {
-    for (let value of sortedarr) {
-      if (value == arr[inter]) {
-        document.write("Punti Inter: ");
-      }
-      if (value == arr[juve]) {
-        document.write("Punti Juve: ");
-      }
-      if (value == arr[milan]) {
-        document.write("Punti Milan: ");
-      }
-      if (value == arr[sampdoria]) {
-        document.write("Punti Sampdoria: ");
-      }
-      if (value == arr[torino]) {
-        document.write("Punti Torino: ");
-      }
-      if (value == arr[roma]) {
-        document.write("Punti Roma: ");
-      }
-      if (value == arr[benevento]) {
-        document.write("Punti Benevento: ");
-      }
-      document.write(value);
-      document.write("\n");
-    }
-  }).call(this);
+  console.log("Avviata funzione avviaprogramma()")
+  let giornata
+  if(document.getElementById('giornata7').checked) {
+    giornata=7;
+    console.log("giornata7 checked")
+  }
+  if(document.getElementById('giornata6').checked) giornata=6
+  if(document.getElementById('giornata5').checked) giornata=5
+  if(document.getElementById('giornata4').checked) giornata=4
+  console.log("if finiti")
+  partite(giornata);
+  let risultati=document.getElementById("Risultati");
+  console.log("dopogetelement")
+  //risultati.appendChild(document.createElement(h1))
+  risultati.appendChild(failista());
+  console.log("finita funzione")
 }
