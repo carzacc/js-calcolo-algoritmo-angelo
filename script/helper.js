@@ -80,6 +80,8 @@ function failista() {
   for (let i = 0; i < sortedarr.length; i++) {
     let elemento = document.createElement('li');
     //da mettere nome squadra
+    elemento.appendChild(document.createTextNode(squadre[i]));
+    elemento.appendChild(document.createTextNode(": "));
     elemento.appendChild(document.createTextNode(sortedarr[i]));
     lista.appendChild(elemento);
   }

@@ -77,9 +77,11 @@
 function failista()  {
   console.log("dentro lista")
   let lista = document.createElement("ul");
-  for(let i = 0;i<sortedarr.length;i++) {
+  for(let i = 0;i<=sortedarr.length;i++) {
     let elemento = document.createElement('li');
     //da mettere nome squadra
+    elemento.appendChild(document.createTextNode(squadre[i]));
+    elemento.appendChild(document.createTextNode(": "))
     elemento.appendChild(document.createTextNode(sortedarr[i]));
     lista.appendChild(elemento);
   }
