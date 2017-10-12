@@ -25,6 +25,7 @@ const quotaGS = 1.5;
 const quotaGF = 1.3;
 var arr = new Array(20);
 var sortedarr = new Array(20);
+let squadre = new Array(20);
 
 var Squadra = class Squadra {
   constructor() {
@@ -56,6 +57,12 @@ var Squadra = class Squadra {
   getPuntiTrad() {
     return parseInt(this.puntiTrad);
   }
+  azzeraPunti() {
+    this.punti=0;
+  }
+  azzeraPuntiTrad() {
+    this.puntiTrad=0;
+  }
 };
 
 var Inter = new Squadra();
@@ -80,6 +87,8 @@ var Cagliari = new Squadra();
 var Bologna = new Squadra();
 
 function partita(squadra1, squadra2, goal1, goal2) {
+  console.log("partita");
+  console.log(squadra1);
   if (squadra1 == "Inter") {
     Inter.aggiungipartita(goal1, goal2);
   }
