@@ -23,8 +23,8 @@ const bologna = 19;
 const quotaCS = 2.5;
 const quotaGS = 1.5;
 const quotaGF = 1.3;
-var arr = new Float32Array(20);
-var sortedarr = new Float32Array(20);
+var arr = new Array(20);
+var sortedarr = new Array(20);
 var squadre = new Array(20);
 var nomisquadre = new Array(20);
 

@@ -126,6 +126,8 @@ function avviaprogramma() {
   console.log("if finiti")
   partite(giornata);
   generaarray();
+  sortedarr.sort();
+  sortedarr.reverse();
   let risultati=document.getElementById("Risultati");
   console.log("dopogetelement")
   let titolorisultati = risultati.appendChild(document.createElement('h1'))
@@ -134,6 +136,8 @@ function avviaprogramma() {
   risultati.appendChild(failista());
   console.log(Inter.getPunti());
   console.log("finita funzione")
+  sortedarr.sort();
+  sortedarr.reverse();
   for(let membro of arr)  {
     console.log(membro)
   }
