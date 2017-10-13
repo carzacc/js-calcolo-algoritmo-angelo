@@ -87,6 +87,8 @@ let failista=function()  {
   return lista;
 }
 let avviaprogramma = function() {
+  let indicatorezona=document.getElementById('indicatorezona')
+  indicatorezona.style.display ='none'
   let divrisultati = document.getElementById('Risultati')
   let divtasti = document.getElementById('tasti')
   console.log("Avviata funzione avviaprogramma()")
@@ -105,13 +107,13 @@ let avviaprogramma = function() {
   console.log("dopogetelement")
   let titolorisultati = risultati.appendChild(document.createElement('h1'))
   titolorisultati.appendChild(document.createTextNode("RISULTATI:"))
-  risultati.appendChild(document.createElement('br'))
+  let accapo=risultati.appendChild(document.createElement('br'))
   var lista=risultati.appendChild(failista());
   let tastoreset
   (function creatastoreset()  {
     tastoreset=document.createElement('button')
     divtasti.appendChild(tastoreset)
-    let testotasto=document.createTextNode("Resetta risultati")
+    let testotasto=document.createTextNode("Resetta tutto")
     tastoreset.appendChild(testotasto)
   }).call(this)
   console.log(Inter.getPunti());
@@ -124,5 +126,7 @@ let avviaprogramma = function() {
     parent.removeChild(lista)
     parent.removeChild(titolorisultati)
     divtasti.removeChild(tastoreset)
+    parent.removeChild(accapo)
+    indicatorezona.style.display = 'visible'
   }
 }
