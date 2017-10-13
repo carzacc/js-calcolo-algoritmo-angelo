@@ -66,34 +66,7 @@ function generaarray(){
     arr[lazio] = Lazio.getPunti();
     arr[udinese] = Udinese.getPunti();
     sortedarr = Array.from(arr);
-    sortedarr.sort();
-    sortedarr.reverse();
-  }).call(this);
-
-  (function () {
-    arr[inter] = Inter.getPunti();
-    arr[juve] = Juve.getPunti();
-    arr[milan] = Milan.getPunti();
-    arr[sampdoria] = Sampdoria.getPunti();
-    arr[torino] = Torino.getPunti();
-    arr[roma] = Roma.getPunti();
-    arr[benevento] = Benevento.getPunti();
-    arr[hellas] = Hellas.getPunti();
-    arr[atalanta] = Atalanta.getPunti();
-    arr[spal] = Spal.getPunti();
-    arr[crotone] = Crotone.getPunti();
-    arr[chievo] = Chievo.getPunti();
-    arr[fiorentina] = Fiorentina.getPunti();
-    arr[napoli] = Napoli.getPunti();
-    arr[bologna] = Bologna.getPunti();
-    arr[cagliari] = Cagliari.getPunti();
-    arr[genoa] = Genoa.getPunti();
-    arr[sassuolo] = Sassuolo.getPunti();
-    arr[lazio] = Lazio.getPunti();
-    arr[udinese] = Udinese.getPunti();
-    sortedarr = Array.from(arr);
-    sortedarr.sort();
-    sortedarr.reverse();
+    sortedarr.sort(((a, b) => b - a));
   }).call(this);
 
 }
@@ -126,8 +99,6 @@ function avviaprogramma() {
   console.log("if finiti")
   partite(giornata);
   generaarray();
-  sortedarr.sort();
-  sortedarr.reverse();
   let risultati=document.getElementById("Risultati");
   console.log("dopogetelement")
   let titolorisultati = risultati.appendChild(document.createElement('h1'))
@@ -136,8 +107,6 @@ function avviaprogramma() {
   risultati.appendChild(failista());
   console.log(Inter.getPunti());
   console.log("finita funzione")
-  sortedarr.sort();
-  sortedarr.reverse();
   for(let membro of arr)  {
     console.log(membro)
   }
