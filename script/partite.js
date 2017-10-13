@@ -1,3 +1,4 @@
+'use strict';
 function partite(giornata) {
   for(let value of squadre) {
     value.azzeraPunti();
