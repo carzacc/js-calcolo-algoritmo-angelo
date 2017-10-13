@@ -71,7 +71,7 @@ function generaarray(){
 
 }
 
-function failista()  {
+let failista=function()  {
   console.log("dentro lista")
   let lista = document.createElement("ul");
   for(var i = 0;i<=sortedarr.length;i++) {
@@ -86,7 +86,9 @@ function failista()  {
   }
   return lista;
 }
-function avviaprogramma() {
+let avviaprogramma = function() {
+  let divrisultati = document.getElementById('Risultati')
+  let divtasti = document.getElementById('tasti')
   console.log("Avviata funzione avviaprogramma()")
   let giornata
   if(document.getElementById('giornata7').checked) {
@@ -104,10 +106,23 @@ function avviaprogramma() {
   let titolorisultati = risultati.appendChild(document.createElement('h1'))
   titolorisultati.appendChild(document.createTextNode("RISULTATI:"))
   risultati.appendChild(document.createElement('br'))
-  risultati.appendChild(failista());
+  var lista=risultati.appendChild(failista());
+  let tasto
+  (function creatastoreset()  {
+    tasto=document.createElement('button')
+    divtasti.appendChild(tasto)
+    testotasto=document.createTextNode("Resetta risultati")
+    tasto.appendChild(testotasto)
+  }).call(this)
   console.log(Inter.getPunti());
   console.log("finita funzione")
   for(let membro of arr)  {
     console.log(membro)
+  }
+  tasto.onclick = function() {
+    let parent=document.getElementById("Risultati")
+    parent.removeChild(lista)
+    parent.removeChild(titolorisultati)
+    divtasti.removeChild(tasto)
   }
 }
