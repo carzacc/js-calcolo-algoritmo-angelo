@@ -4,7 +4,6 @@ function partite(giornata) {
     value.azzeraPunti();
     value.azzeraPuntiTrad();
   }
-
   console.log("PARTITEEEEEEEEEEEEEEEEEEEEEE");
   let soloquarta = 0;
   let finoquinta = 0;
