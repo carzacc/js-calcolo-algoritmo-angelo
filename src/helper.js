@@ -77,8 +77,8 @@ let failista=function()  {
   for(var i = 0;i<=sortedarr.length;i++) {
     let elemento = document.createElement('li');
     //da mettere nome squadra
-    for(let c=0;c<=squadre.length;c++) {
-      if(arr[i]==sortedarr[i]) elemento.appendChild(document.createTextNode(nomisquadre[i]));
+    for(let c=0;c<=arr.length;c++) {
+      if(arr[c]==sortedarr[i]) elemento.appendChild(document.createTextNode(nomisquadre[c]))
     }
     elemento.appendChild(document.createTextNode(": "))
     elemento.appendChild(document.createTextNode(sortedarr[i]));
@@ -107,22 +107,22 @@ let avviaprogramma = function() {
   titolorisultati.appendChild(document.createTextNode("RISULTATI:"))
   risultati.appendChild(document.createElement('br'))
   var lista=risultati.appendChild(failista());
-  let tasto
+  let tastoreset
   (function creatastoreset()  {
-    tasto=document.createElement('button')
-    divtasti.appendChild(tasto)
+    tastoreset=document.createElement('button')
+    divtasti.appendChild(tastoreset)
     testotasto=document.createTextNode("Resetta risultati")
-    tasto.appendChild(testotasto)
+    tastoreset.appendChild(testotasto)
   }).call(this)
   console.log(Inter.getPunti());
   console.log("finita funzione")
   for(let membro of arr)  {
     console.log(membro)
   }
-  tasto.onclick = function() {
+  tastoreset.onclick = function() {
     let parent=document.getElementById("Risultati")
     parent.removeChild(lista)
     parent.removeChild(titolorisultati)
-    divtasti.removeChild(tasto)
+    divtasti.removeChild(tastoreset)
   }
 }
