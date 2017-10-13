@@ -74,14 +74,14 @@ function generaarray() {
 let failista = function () {
   console.log("dentro lista");
   let lista = document.createElement("ul");
-  for (var i = 0; i <= sortedarr.length; i++) {
+  for (var i = 0; i < sortedarr.length; i++) {
     let elemento = document.createElement('li');
     //da mettere nome squadra
-    for (let c = 0; c <= arr.length; c++) {
+    for (let c = 0; c < arr.length; c++) {
       if (arr[c] == sortedarr[i]) elemento.appendChild(document.createTextNode(nomisquadre[c]));
     }
     elemento.appendChild(document.createTextNode(": "));
-    elemento.appendChild(document.createTextNode(sortedarr[i]));
+    elemento.appendChild(document.createTextNode(sortedarr[i].toFixed(1)));
     lista.appendChild(elemento);
   }
   return lista;
