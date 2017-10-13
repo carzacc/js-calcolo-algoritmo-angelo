@@ -1,3 +1,4 @@
+'use strict';
 
 (function () {
   squadre[inter] = Inter;
@@ -110,7 +111,7 @@ let avviaprogramma = function () {
   (function creatastoreset() {
     tastoreset = document.createElement('button');
     divtasti.appendChild(tastoreset);
-    testotasto = document.createTextNode("Resetta risultati");
+    let testotasto = document.createTextNode("Resetta risultati");
     tastoreset.appendChild(testotasto);
   }).call(this);
   console.log(Inter.getPunti());
