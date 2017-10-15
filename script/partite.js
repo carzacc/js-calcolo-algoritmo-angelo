@@ -1,9 +1,9 @@
+'use strict';
 function partite(giornata) {
   for(let value of squadre) {
     value.azzeraPunti();
     value.azzeraPuntiTrad();
   }
-
   console.log("PARTITEEEEEEEEEEEEEEEEEEEEEE");
   let soloquarta = 0;
   let finoquinta = 0;
