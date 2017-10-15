@@ -1,5 +1,19 @@
 {
-  "name"    : "Classifica Serie A alternativa",
-  "version" : "1.0",
-  "main"    : "main.js"
+  "name": "classifica-serie-a-alternativa",
+  "version": "1.0.0",
+  "description": "Una serie di classifiche per la Serie A italiana",
+  "main": "main.js",
+    "scripts": {
+      "start": "./node_modules/electron/dist/electron ."
+  },
+  "repository": "https://github.com/carzacc/js-calcolo-algoritmo-angelo.git",
+  "author": "Carmine",
+  "license": "GPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/carzacc/js-calcolo-algoritmo-angelo/issues"
+  },
+  "homepage": "https://carzacc.github.io/js-calcolo-algoritmo-angelo",
+  "devDependencies": {
+  "electron": "~1.7.8"
+}
 }
