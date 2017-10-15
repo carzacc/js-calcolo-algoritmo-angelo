@@ -1,8 +1,14 @@
+#avviatore  {
+}
 #Risultati  {
   background-color: #438727;
+  width: 45%;
+  float:right;
 }
 div {
   background-color: #4366a0;
+  width: 45%;
+  float:left ;
 }
 h2  {
   font-family: 'Droid Sans', sans-serif;
