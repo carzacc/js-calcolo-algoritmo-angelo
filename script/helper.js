@@ -44,8 +44,19 @@
   nomisquadre[lazio] = "Lazio";
   nomisquadre[udinese] = "Udinese";
 }).call(this);
+
+let tipoclassifica = () => {
+  let Alt = document.getElementById("alt").checked;
+  let Trad = document.getElementById("trad").checked;
+  let Somma = document.getElementById("somma").checked;
+  if (Alt) return "Alt";
+  if (Trad) return "Trad";
+  if (Somma) return "Somma";
+};
+
 function generaarray() {
-  (function () {
+  let classif = tipoclassifica();
+  if (classif == "Alt") {
     arr[inter] = Inter.getPunti();
     arr[juve] = Juve.getPunti();
     arr[milan] = Milan.getPunti();
@@ -66,27 +77,73 @@ function generaarray() {
     arr[sassuolo] = Sassuolo.getPunti();
     arr[lazio] = Lazio.getPunti();
     arr[udinese] = Udinese.getPunti();
-    sortedarr = Array.from(arr);
-    sortedarr.sort((a, b) => b - a);
-  }).call(this);
+  }
+  if (classif == "Trad") {
+    arr[inter] = Inter.getPuntiTrad();
+    arr[juve] = Juve.getPuntiTrad();
+    arr[milan] = Milan.getPuntiTrad();
+    arr[sampdoria] = Sampdoria.getPuntiTrad();
+    arr[torino] = Torino.getPuntiTrad();
+    arr[roma] = Roma.getPuntiTrad();
+    arr[benevento] = Benevento.getPuntiTrad();
+    arr[hellas] = Hellas.getPuntiTrad();
+    arr[atalanta] = Atalanta.getPuntiTrad();
+    arr[spal] = Spal.getPuntiTrad();
+    arr[crotone] = Crotone.getPuntiTrad();
+    arr[chievo] = Chievo.getPuntiTrad();
+    arr[fiorentina] = Fiorentina.getPuntiTrad();
+    arr[napoli] = Napoli.getPuntiTrad();
+    arr[bologna] = Bologna.getPuntiTrad();
+    arr[cagliari] = Cagliari.getPuntiTrad();
+    arr[genoa] = Genoa.getPuntiTrad();
+    arr[sassuolo] = Sassuolo.getPuntiTrad();
+    arr[lazio] = Lazio.getPuntiTrad();
+    arr[udinese] = Udinese.getPuntiTrad();
+  }
+  if (classif == "Somma") {
+    arr[inter] = Inter.getPunti() + Inter.getPuntiTrad();
+    arr[juve] = Juve.getPunti() + Juve.getPuntiTrad();
+    arr[milan] = Milan.getPunti() + Milan.getPuntiTrad();
+    arr[sampdoria] = Sampdoria.getPunti() + Sampdoria.getPuntiTrad();
+    arr[torino] = Torino.getPunti() + Torino.getPuntiTrad();
+    arr[roma] = Roma.getPunti() + Roma.getPuntiTrad();
+    arr[benevento] = Benevento.getPunti() + Benevento.getPuntiTrad();
+    arr[hellas] = Hellas.getPunti() + Hellas.getPuntiTrad();
+    arr[atalanta] = Atalanta.getPunti() + Atalanta.getPuntiTrad();
+    arr[spal] = Spal.getPunti() + Spal.getPuntiTrad();
+    arr[crotone] = Crotone.getPunti() + Crotone.getPuntiTrad();
+    arr[chievo] = Chievo.getPunti() + Chievo.getPuntiTrad();
+    arr[fiorentina] = Fiorentina.getPunti() + Fiorentina.getPuntiTrad();
+    arr[napoli] = Napoli.getPunti() + Napoli.getPuntiTrad();
+    arr[bologna] = Bologna.getPunti() + Bologna.getPuntiTrad();
+    arr[cagliari] = Cagliari.getPunti() + Cagliari.getPuntiTrad();
+    arr[genoa] = Genoa.getPunti() + Genoa.getPuntiTrad();
+    arr[sassuolo] = Sassuolo.getPunti() + Sassuolo.getPuntiTrad();
+    arr[lazio] = Lazio.getPunti() + Lazio.getPuntiTrad();
+    arr[udinese] = Udinese.getPunti() + Udinese.getPuntiTrad();
+  }
+  sortedarr = Array.from(arr);
+  sortedarr.sort((a, b) => b - a);
 }
 
 let failista = function () {
   console.log("dentro lista");
   let lista = document.createElement("ul");
-  for (var i = 0; i <= sortedarr.length; i++) {
+  for (var i = 0; i < sortedarr.length; i++) {
     let elemento = document.createElement('li');
     //da mettere nome squadra
-    for (let c = 0; c <= arr.length; c++) {
+    for (let c = 0; c < arr.length; c++) {
       if (arr[c] == sortedarr[i]) elemento.appendChild(document.createTextNode(nomisquadre[c]));
     }
     elemento.appendChild(document.createTextNode(": "));
-    elemento.appendChild(document.createTextNode(sortedarr[i]));
+    elemento.appendChild(document.createTextNode(sortedarr[i].toFixed(1)));
     lista.appendChild(elemento);
   }
   return lista;
 };
 let avviaprogramma = function () {
+  let indicatorezona = document.getElementById('indicatorezona');
+  indicatorezona.style.display = 'none';
   let divrisultati = document.getElementById('Risultati');
   let divtasti = document.getElementById('tasti');
   console.log("Avviata funzione avviaprogramma()");
@@ -105,13 +162,13 @@ let avviaprogramma = function () {
   console.log("dopogetelement");
   let titolorisultati = risultati.appendChild(document.createElement('h1'));
   titolorisultati.appendChild(document.createTextNode("RISULTATI:"));
-  risultati.appendChild(document.createElement('br'));
+  let accapo = risultati.appendChild(document.createElement('br'));
   var lista = risultati.appendChild(failista());
   let tastoreset;
   (function creatastoreset() {
     tastoreset = document.createElement('button');
     divtasti.appendChild(tastoreset);
-    let testotasto = document.createTextNode("Resetta risultati");
+    let testotasto = document.createTextNode("Resetta tutto");
     tastoreset.appendChild(testotasto);
   }).call(this);
   console.log(Inter.getPunti());
@@ -124,5 +181,7 @@ let avviaprogramma = function () {
     parent.removeChild(lista);
     parent.removeChild(titolorisultati);
     divtasti.removeChild(tastoreset);
+    parent.removeChild(accapo);
+    indicatorezona.style.display = 'visible';
   };
 };
