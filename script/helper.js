@@ -152,6 +152,9 @@ let avviaprogramma = function () {
     giornata = 7;
     console.log("giornata7 checked");
   }
+  if (document.getElementById('giornata9').checked) giornata = 9;
+  if (document.getElementById('giornata8').checked) giornata = 8;
+  if (document.getElementById('giornata7').checked) giornata = 7;
   if (document.getElementById('giornata6').checked) giornata = 6;
   if (document.getElementById('giornata5').checked) giornata = 5;
   if (document.getElementById('giornata4').checked) giornata = 4;
