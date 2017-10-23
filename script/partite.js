@@ -104,6 +104,16 @@ function partite(giornata) {
       partita("Sassuolo","Chievo",0,0);
       partita("Inter","Milan",3,2);
       partita("Verona", "Benevento",1,0)
+partita("Sampdoria","Crotone",5,0);
+partita("Napoli","Inter",0,0);
+partita("Chievo","Verona",3,2);
+partita("Atalanta","Bologna",1,0);
+partita("Benevento", "Fiorentina",0,3);
+partita("Milan","Genoa",0,0);
+partita("Spal","Sassuolo",0,1);
+partita("Torino","Roma",0,1);
+partita("Udinese","juventus",2,6);
+partita("Lazio","Cagliari",3,0)
     }
   }
   console.log("PARTITEEEEEEEEEEEEEEEEEEEEEEFATTE");
