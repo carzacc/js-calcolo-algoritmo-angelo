@@ -119,6 +119,16 @@ function partite(giornata) {
         partita("Torino","Roma",0,1);
         partita("Udinese","juventus",2,6);
         partita("Lazio","Cagliari",3,0);
+partita("Inter","Sampdoria",3,2);
+partita("Atalanta","Verona",3,0);
+partita("Bologna","Lazio",1,2);
+partita("Cagliari", "Benevento",2,1);
+partita("Chievo","Milan",1,4);
+partita("Fiorentina","Torino",3,0);
+partita("Genoa","Napoli",2,3);
+partita("juventus","Spal",4,1);
+partita("Roma","Crotone",1,0);
+partita("Sassuolo","Udinese",0,1);
       }
     }
   }
