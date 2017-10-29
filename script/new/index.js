@@ -1,5 +1,5 @@
 'use strict';
-let query = function(giornata)  {
+let avviaprogramma = function(giornata)  {
   $.get("http://algorest.carzacc.info/?g="+giornata, function(squadre) {
     let risultati = document.getElementById("Risultati");
     let listasquadre = JSON.parse(squadre)
