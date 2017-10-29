@@ -1,5 +1,6 @@
-'use strict';
-let avviaprogramma = function(giornata)  {
+// <script src="./script/new/index.js"></script>
+
+query = function(giornata)  {
   $.get("http://algorest.carzacc.info/?g="+giornata, function(squadre) {
     let risultati = document.getElementById("Risultati");
     let listasquadre = JSON.parse(squadre)
@@ -13,9 +14,10 @@ let avviaprogramma = function(giornata)  {
       //da mettere nome squadra
       elemento.appendChild(document.createTextNode(listasquadre[i].nome))
       elemento.appendChild(document.createTextNode(": "));
-      elemento.appendChild(document.createTextNode(listasquadre[i].puntiAlt);
+      elemento.appendChild(document.createTextNode(listasquadre[i].puntiAlt));
       lista.appendChild(elemento);
     }
+    risultati.appendChild(lista);
     let tastoreset;
     (function creatastoreset() {
       tastoreset = document.createElement('button');
@@ -42,7 +44,7 @@ let avviaprogramma = function(giornata)  {
 
   });
 }
-let avviaprogramma = function () {
+avviaprogramma = function () {
   let indicatorezona = document.getElementById('indicatorezona');
   indicatorezona.style.display = 'none';
   let divrisultati = document.getElementById('Risultati');
@@ -63,7 +65,7 @@ let avviaprogramma = function () {
   console.log("if finiti");
   query(giornata);
 };
-let failista = function () {
+/*let failista = function () {
   console.log("dentro lista");
   let lista = document.createElement("ul");
   for (var i = 0; i < sortedarr.length; i++) {
@@ -77,8 +79,8 @@ let failista = function () {
     lista.appendChild(elemento);
   }
   return lista;
-};
-let tipoclassifica = () => {
+};*/
+tipoclassifica = () => {
   let Alt = document.getElementById("alt").checked;
   let Trad = document.getElementById("trad").checked;
   let Somma = document.getElementById("somma").checked;
