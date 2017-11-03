@@ -13,6 +13,7 @@ function partite(giornata) {
   let finosettima = 0;
   let finottava = 0;
   let finonona = 0;
+  let finodecima = 0;
   if(giornata<5)
     soloquarta=1;
   if(giornata<6)
@@ -25,6 +26,8 @@ function partite(giornata) {
     finottava=1;
   if(giornata<10)
     finonona=1;
+  if(giornata<11)
+    finodecima=1;
   partita("juventus", "Cagliari", 3, 0);
   partita("Verona", "Napoli", 1, 3);
   partita("Atalanta", "Roma", 0, 1);
@@ -136,6 +139,18 @@ function partite(giornata) {
           partita("juventus","Spal",4,1);
           partita("Roma","Crotone",1,0);
           partita("Sassuolo","Udinese",0,1);
+          if(!finodecima) {
+            partita("Milan","juventus",0,2);
+            partita("Roma","Bologna",1,0);
+            partita("Benevento","Lazio",1,5);
+            partita("Sampdoria","Chievo",4,1);
+            partita("Spal","Genoa",1,0);
+            partita("Napoli","Sassuolo",3,1);
+            partita("Udinese","Atalanta",2,1);
+            partita("Crotone", "Fiorentina",2,1);
+            partita("Torino","Cagliari",2,1);
+            partita("Verona","Inter",1,2);
+          }
         }
       }
     }
