@@ -12,38 +12,41 @@
     You should have received a copy of the GNU General Public License
     along with classifica-serie-a-alternativa.  If not, see <http://www.gnu.org/licenses/>.
 */
-let prelevadati = function()  {
-  $.get( "http://algorest.carzacc.info", function( data ) {
-   console.log(data)
+let punti = Array(20);
+let squadre = Array(20);
+let prelevadati = function(g)  {
+  $.getJSON( "http://algorest.carzacc.info/?g="+g, function( data ) {
+   console.log(data);
+   let squadre = data;
 });
 }
-/*let failista = function () {
+let failista = function () {
   console.log("dentro lista");
+  let Alt = document.getElementById("alt").checked;
+  let Trad = document.getElementById("trad").checked;
+  let Somma = document.getElementById("somma").checked;
+  for (let i=0; i<punti.length; i++)  {
+    if (Alt) punti[i] = squadre[i].Alternativa;
+    if (Trad) punti[i] = squadre[i].Tradizionale;
+    if (Somma) punti[i] = squadre[i].Somma;
+  }
   let lista = document.createElement("ul");
-  for (var i = 0; i < sortedarr.length; i++) {
+  for (var i = 0; i < punti.length; i++) {
     let elemento = document.createElement('li');
-    //da mettere nome squadra
-    for (let c = 0; c < arr.length; c++) {
-      if (arr[c] == sortedarr[i]) elemento.appendChild(document.createTextNode(nomisquadre[c]));
-    }
+    elemento.appendChild(document.createTextNode(squadre[i].Squadra));
     elemento.appendChild(document.createTextNode(": "));
-    elemento.appendChild(document.createTextNode(sortedarr[i].toFixed(1)));
+    elemento.appendChild(document.createTextNode(punti[i].toFixed(1)));
     lista.appendChild(elemento);
   }
   return lista;
-};*/
+};
 let avviaprogramma = function () {
-  prelevadati();
-/*  let indicatorezona = document.getElementById('indicatorezona');
+  let giornata: number;
+  let indicatorezona = document.getElementById('indicatorezona');
   indicatorezona.style.display = 'none';
   let divrisultati = document.getElementById('Risultati');
   let divtasti = document.getElementById('tasti');
   console.log("Avviata funzione avviaprogramma()");
-  let giornata;
-  if (document.getElementById('giornata7').checked) {
-    giornata = 7;
-    console.log("giornata7 checked");
-  }
   if (document.getElementById('giornata11').checked) giornata = 11;
   if (document.getElementById('giornata10').checked) giornata = 10;
   if (document.getElementById('giornata9').checked) giornata = 9;
@@ -53,8 +56,7 @@ let avviaprogramma = function () {
   if (document.getElementById('giornata5').checked) giornata = 5;
   if (document.getElementById('giornata4').checked) giornata = 4;
   console.log("if finiti");
-  partite(giornata);
-  generaarray();
+  prelevadati(giornata);
   let risultati = document.getElementById("Risultati");
   console.log("dopogetelement");
   let titolorisultati = risultati.appendChild(document.createElement('h1'));
@@ -68,13 +70,7 @@ let avviaprogramma = function () {
     let testotasto = document.createTextNode("Resetta tutto");
     tastoreset.appendChild(testotasto);
   }).call(this);
-  console.log(Inter.getPunti());
   console.log("finita funzione");
-  let membro
-  for (let i = 0;i < arr.length;i++ ) { // equivalente a for (let membro of arr)
-    membro = arr[i];
-    console.log(membro);
-  }
   tastoreset.onclick = function () {
     let parent = document.getElementById("Risultati");
     parent.removeChild(lista);
@@ -82,5 +78,5 @@ let avviaprogramma = function () {
     divtasti.removeChild(tastoreset);
     parent.removeChild(accapo);
     indicatorezona.style.display = 'visible';
-  };*/
+  };
 };
