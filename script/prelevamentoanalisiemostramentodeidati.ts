@@ -12,52 +12,26 @@
     You should have received a copy of the GNU General Public License
     along with classifica-serie-a-alternativa.  If not, see <http://www.gnu.org/licenses/>.
 */
-let punti = Array(20);
-let squadre = Array(20);
-let prelevadati = function(g)  {
-  $.getJSON( "http://algorest.carzacc.info/?g="+g, function( data ) {
-   console.log(data);
-   let squadre = data;
-});
-}
-let failista = function () {
-  console.log("dentro lista");
-  let Alt = document.getElementById("alt").checked;
-  let Trad = document.getElementById("trad").checked;
-  let Somma = document.getElementById("somma").checked;
-  for (let i=0; i<punti.length; i++)  {
-    if (Alt) punti[i] = squadre[i].Alternativa;
-    if (Trad) punti[i] = squadre[i].Tradizionale;
-    if (Somma) punti[i] = squadre[i].Somma;
-  }
-  let lista = document.createElement("ul");
-  for (var i = 0; i < punti.length; i++) {
-    let elemento = document.createElement('li');
-    elemento.appendChild(document.createTextNode(squadre[i].Squadra));
-    elemento.appendChild(document.createTextNode(": "));
-    elemento.appendChild(document.createTextNode(punti[i].toFixed(1)));
-    lista.appendChild(elemento);
-  }
-  return lista;
-};
-let avviaprogramma = function () {
+var punti = Array(20);
+var squadre = Array(20);
+var avviaprogramma = function () {
   let giornata: number;
   let indicatorezona = document.getElementById('indicatorezona');
   indicatorezona.style.display = 'none';
   let divrisultati = document.getElementById('Risultati');
   let divtasti = document.getElementById('tasti');
   console.log("Avviata funzione avviaprogramma()");
-  if (document.getElementById('giornata11').checked) giornata = 11;
-  if (document.getElementById('giornata10').checked) giornata = 10;
-  if (document.getElementById('giornata9').checked) giornata = 9;
-  if (document.getElementById('giornata8').checked) giornata = 8;
-  if (document.getElementById('giornata7').checked) giornata = 7;
-  if (document.getElementById('giornata6').checked) giornata = 6;
-  if (document.getElementById('giornata5').checked) giornata = 5;
-  if (document.getElementById('giornata4').checked) giornata = 4;
+  if ((<HTMLInputElement>document.getElementById('giornata11')).checked) giornata = 11;
+  if ((<HTMLInputElement>document.getElementById('giornata10')).checked) giornata = 10;
+  if ((<HTMLInputElement>document.getElementById('giornata9')).checked) giornata = 9;
+  if ((<HTMLInputElement>document.getElementById('giornata8')).checked) giornata = 8;
+  if ((<HTMLInputElement>document.getElementById('giornata7')).checked) giornata = 7;
+  if ((<HTMLInputElement>document.getElementById('giornata6')).checked) giornata = 6;
+  if ((<HTMLInputElement>document.getElementById('giornata5')).checked) giornata = 5;
+  if ((<HTMLInputElement>document.getElementById('giornata4')).checked) giornata = 4;
   console.log("if finiti");
   prelevadati(giornata);
-  let risultati = document.getElementById("Risultati");
+  let risultati = (<HTMLInputElement>document.getElementById("Risultati"));
   console.log("dopogetelement");
   let titolorisultati = risultati.appendChild(document.createElement('h1'));
   titolorisultati.appendChild(document.createTextNode("RISULTATI:"));
@@ -72,11 +46,38 @@ let avviaprogramma = function () {
   }).call(this);
   console.log("finita funzione");
   tastoreset.onclick = function () {
-    let parent = document.getElementById("Risultati");
+    let parent = (<HTMLInputElement>document.getElementById("Risultati"));
     parent.removeChild(lista);
     parent.removeChild(titolorisultati);
     divtasti.removeChild(tastoreset);
     parent.removeChild(accapo);
     indicatorezona.style.display = 'visible';
   };
+};
+
+var prelevadati = function(g)  {
+  $.getJSON( "http://algorest.carzacc.info/?g="+g, function( data ) {
+   console.log(data);
+   squadre = data;
+});
+}
+var failista = function () {
+  console.log("dentro lista");
+  let Alt = (<HTMLInputElement>document.getElementById("alt")).checked;
+  let Trad = (<HTMLInputElement>document.getElementById("trad")).checked;
+  let Somma = (<HTMLInputElement>document.getElementById("somma")).checked;
+  for (let i=0; i<punti.length; i++)  {
+    if (Alt) punti[i] = squadre[i].Alternativa;
+    if (Trad) punti[i] = squadre[i].Tradizionale;
+    if (Somma) punti[i] = squadre[i].Somma;
+  }
+  let lista = document.createElement("ul");
+  for (var i = 0; i < punti.length; i++) {
+    let elemento = document.createElement('li');
+    elemento.appendChild(document.createTextNode(squadre[i].Squadra));
+    elemento.appendChild(document.createTextNode(": "));
+    elemento.appendChild(document.createTextNode(punti[i].toFixed(1)));
+    lista.appendChild(elemento);
+  }
+  return lista;
 };

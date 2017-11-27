@@ -12,38 +12,9 @@
     You should have received a copy of the GNU General Public License
     along with classifica-serie-a-alternativa.  If not, see <http://www.gnu.org/licenses/>.
 */
-let punti = Array(20);
-let squadre = Array(20);
-let prelevadati = function (g) {
-    $.getJSON("http://algorest.carzacc.info/?g=" + g, function (data) {
-        console.log(data);
-        let squadre = data;
-    });
-};
-let failista = function () {
-    console.log("dentro lista");
-    let Alt = document.getElementById("alt").checked;
-    let Trad = document.getElementById("trad").checked;
-    let Somma = document.getElementById("somma").checked;
-    for (let i = 0; i < punti.length; i++) {
-        if (Alt)
-            punti[i] = squadre[i].Alternativa;
-        if (Trad)
-            punti[i] = squadre[i].Tradizionale;
-        if (Somma)
-            punti[i] = squadre[i].Somma;
-    }
-    let lista = document.createElement("ul");
-    for (var i = 0; i < punti.length; i++) {
-        let elemento = document.createElement('li');
-        elemento.appendChild(document.createTextNode(squadre[i].Squadra));
-        elemento.appendChild(document.createTextNode(": "));
-        elemento.appendChild(document.createTextNode(punti[i].toFixed(1)));
-        lista.appendChild(elemento);
-    }
-    return lista;
-};
-let avviaprogramma = function () {
+var punti = Array(20);
+var squadre = Array(20);
+var avviaprogramma = function () {
     let giornata;
     let indicatorezona = document.getElementById('indicatorezona');
     indicatorezona.style.display = 'none';
@@ -90,4 +61,33 @@ let avviaprogramma = function () {
         parent.removeChild(accapo);
         indicatorezona.style.display = 'visible';
     };
+};
+var prelevadati = function (g) {
+    $.getJSON("http://algorest.carzacc.info/?g=" + g, function (data) {
+        console.log(data);
+        squadre = data;
+    });
+};
+var failista = function () {
+    console.log("dentro lista");
+    let Alt = document.getElementById("alt").checked;
+    let Trad = document.getElementById("trad").checked;
+    let Somma = document.getElementById("somma").checked;
+    for (let i = 0; i < punti.length; i++) {
+        if (Alt)
+            punti[i] = squadre[i].Alternativa;
+        if (Trad)
+            punti[i] = squadre[i].Tradizionale;
+        if (Somma)
+            punti[i] = squadre[i].Somma;
+    }
+    let lista = document.createElement("ul");
+    for (var i = 0; i < punti.length; i++) {
+        let elemento = document.createElement('li');
+        elemento.appendChild(document.createTextNode(squadre[i].Squadra));
+        elemento.appendChild(document.createTextNode(": "));
+        elemento.appendChild(document.createTextNode(punti[i].toFixed(1)));
+        lista.appendChild(elemento);
+    }
+    return lista;
 };
