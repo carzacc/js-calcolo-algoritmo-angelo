@@ -76,7 +76,7 @@ var failista = function () {
     let elemento = document.createElement('li');
     elemento.appendChild(document.createTextNode(squadre[i].Squadra));
     elemento.appendChild(document.createTextNode(": "));
-    elemento.appendChild(document.createTextNode(punti[i].toFixed(1)));
+    elemento.appendChild(document.createTextNode(punti[i]));
     lista.appendChild(elemento);
   }
   return lista;
