@@ -16,11 +16,6 @@ var punti = Array(20);
 var squadre = Array(20);
 var avviaprogramma = function () {
     let giornata;
-    let indicatorezona = document.getElementById('indicatorezona');
-    indicatorezona.style.display = 'none';
-    let divrisultati = document.getElementById('Risultati');
-    let divtasti = document.getElementById('tasti');
-    console.log("Avviata funzione avviaprogramma()");
     if (document.getElementById('giornata11').checked)
         giornata = 11;
     if (document.getElementById('giornata10').checked)
@@ -37,35 +32,40 @@ var avviaprogramma = function () {
         giornata = 5;
     if (document.getElementById('giornata4').checked)
         giornata = 4;
-    console.log("if finiti");
     prelevadati(giornata);
-    let risultati = document.getElementById("Risultati");
-    console.log("dopogetelement");
-    let titolorisultati = risultati.appendChild(document.createElement('h1'));
-    titolorisultati.appendChild(document.createTextNode("RISULTATI:"));
-    let accapo = risultati.appendChild(document.createElement('br'));
-    var lista = risultati.appendChild(failista());
-    let tastoreset;
-    (function creatastoreset() {
-        tastoreset = document.createElement('button');
-        divtasti.appendChild(tastoreset);
-        let testotasto = document.createTextNode("Resetta tutto");
-        tastoreset.appendChild(testotasto);
-    }).call(this);
-    console.log("finita funzione");
-    tastoreset.onclick = function () {
-        let parent = document.getElementById("Risultati");
-        parent.removeChild(lista);
-        parent.removeChild(titolorisultati);
-        divtasti.removeChild(tastoreset);
-        parent.removeChild(accapo);
-        indicatorezona.style.display = 'visible';
-    };
 };
 var prelevadati = function (g) {
     $.getJSON("http://algorest.carzacc.info/?g=" + g, function (data) {
+        let indicatorezona = document.getElementById('indicatorezona');
+        indicatorezona.style.display = 'none';
+        let divrisultati = document.getElementById('Risultati');
+        let divtasti = document.getElementById('tasti');
+        console.log("Avviata funzione avviaprogramma()");
+        console.log("if finiti");
+        let risultati = document.getElementById("Risultati");
+        console.log("dopogetelement");
+        let titolorisultati = risultati.appendChild(document.createElement('h1'));
+        titolorisultati.appendChild(document.createTextNode("RISULTATI:"));
+        let accapo = risultati.appendChild(document.createElement('br'));
         console.log(data);
         squadre = data;
+        var lista = risultati.appendChild(failista());
+        let tastoreset;
+        (function creatastoreset() {
+            tastoreset = document.createElement('button');
+            divtasti.appendChild(tastoreset);
+            let testotasto = document.createTextNode("Resetta tutto");
+            tastoreset.appendChild(testotasto);
+        }).call(this);
+        console.log("finita funzione");
+        tastoreset.onclick = function () {
+            let parent = document.getElementById("Risultati");
+            parent.removeChild(lista);
+            parent.removeChild(titolorisultati);
+            divtasti.removeChild(tastoreset);
+            parent.removeChild(accapo);
+            indicatorezona.style.display = 'visible';
+        };
     });
 };
 var failista = function () {
