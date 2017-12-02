@@ -34,6 +34,11 @@ var avviaprogramma = function () {
         giornata = 4;
     prelevadati(giornata);
 };
+var sveglia = function () {
+    $.get("http://algorest.carzacc.info", function (data) {
+        console.log("Svegliato sito");
+    });
+};
 var prelevadati = function (g) {
     $.getJSON("http://algorest.carzacc.info/?g=" + g, function (data) {
         let indicatorezona = document.getElementById('indicatorezona');
