@@ -13,6 +13,7 @@
     You should have received a copy of the GNU General Public License
     along with classifica-serie-a-alternativa.  If not, see <http://www.gnu.org/licenses/>.
 */
+var elemento;
 var lista;
 var divtasti = document.getElementById('tasti');
 var indicatorezona = document.getElementById('indicatorezona');
@@ -79,7 +80,7 @@ var failista = function (g, tipo) {
         }
         lista = document.createElement("ul");
         for (var i = 0; i < punti.length; i++) {
-            let elemento = document.createElement('li');
+            elemento = document.createElement('li');
             elemento.appendChild(document.createTextNode(squadre[i].Squadra));
             elemento.appendChild(document.createTextNode(": "));
             elemento.appendChild(document.createTextNode(punti[i]));
@@ -97,6 +98,7 @@ var failista = function (g, tipo) {
             parent.removeChild(titolorisultati);
             divtasti.removeChild(tastoreset);
             parent.removeChild(accapo);
+            risultati.removeChild(elemento);
             indicatorezona.style.display = 'visible';
         };
     }).call(this);
