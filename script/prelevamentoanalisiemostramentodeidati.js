@@ -86,14 +86,15 @@ var failista = function (g, tipo) {
             if (tipo == "Somma")
                 punti[i] = squadre[i].Somma;
         }
-        lista = document.createElement("ul");
+        let listatemp = document.createElement("ul");
         for (var i = 0; i < punti.length; i++) {
             elemento = document.createElement('li');
             elemento.appendChild(document.createTextNode(squadre[i].Squadra));
             elemento.appendChild(document.createTextNode(": "));
             elemento.appendChild(document.createTextNode(punti[i]));
-            lista = risultati.appendChild(elemento);
+            listatemp.appendChild(elemento);
         }
+        lista = risultati.appendChild(listatemp);
     });
     (function creatastoreset() {
         tastoreset = document.createElement('button');
@@ -102,11 +103,10 @@ var failista = function (g, tipo) {
         tastoreset.appendChild(testotasto);
         tastoreset.onclick = function () {
             let parent = document.getElementById("Risultati");
-            lista.parentNode.removeChild(lista);
             parent.removeChild(titolorisultati);
             divtasti.removeChild(tastoreset);
             parent.removeChild(accapo);
-            risultati.removeChild(elemento);
+            risultati.removeChild(lista);
             indicatorezona.style.display = 'visible';
         };
     }).call(this);
