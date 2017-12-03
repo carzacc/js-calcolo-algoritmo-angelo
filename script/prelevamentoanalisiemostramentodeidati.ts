@@ -44,7 +44,7 @@ var avviaprogramma = function () : void {
     let testotasto = document.createTextNode("Resetta tutto");
     tastoreset.appendChild(testotasto);
   }).call(this);
-  let lista = risultati.appendChild(failista(prelevadati(giornata)));
+  let lista = risultati.appendChild(failista(giornata));
   console.log("finita funzione");
   tastoreset.onclick = function () {
     let parent = (<HTMLInputElement>document.getElementById("Risultati"));
@@ -60,14 +60,6 @@ var sveglia = function () : void  {
     console.log("Svegliato sito");
   });
 }
-function prelevadati (g)  {
-  let dati;
-    $.getJSON( "http://algorest.carzacc.info/?g="+g, function( algoritmo ) {
-      console.log(algoritmo);
-      dati = algoritmo;
-    });
-  return dati;
-}
 
 var tipoclassifica = function(): string {
   let Alt = (<HTMLInputElement>document.getElementById("alt")).checked;
@@ -78,7 +70,12 @@ var tipoclassifica = function(): string {
   if(Somma) return "Somma";
 }
 
-var failista = function (squadre) {
+var failista = function (g) {
+  let squadre;
+    $.getJSON( "http://algorest.carzacc.info/?g="+g, function( algoritmo ) {
+      console.log(algoritmo);
+      squadre = algoritmo;
+    });
   let punti : string[] = Array(20);
   console.log("dentro lista");
   let tipo : string = tipoclassifica();
