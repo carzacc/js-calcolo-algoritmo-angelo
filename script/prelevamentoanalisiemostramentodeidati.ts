@@ -82,13 +82,14 @@ var failista = function (g, tipo): void {
       divtasti.appendChild(tastoreset);
       let testotasto : Text = document.createTextNode("Resetta tutto");
       tastoreset.appendChild(testotasto);
+      tastoreset.onclick = function () {
+        let parent: HTMLInputElement = (<HTMLInputElement>document.getElementById("Risultati"));
+        parent.removeChild(lista);
+        parent.removeChild(titolorisultati);
+        divtasti.removeChild(tastoreset);
+        parent.removeChild(accapo);
+        indicatorezona.style.display = 'visible';
+      }
     }).call(this);
+
 };
-tastoreset.onclick = function () {
-  let parent: HTMLInputElement = (<HTMLInputElement>document.getElementById("Risultati"));
-  parent.removeChild(lista);
-  parent.removeChild(titolorisultati);
-  divtasti.removeChild(tastoreset);
-  parent.removeChild(accapo);
-  indicatorezona.style.display = 'visible';
-}

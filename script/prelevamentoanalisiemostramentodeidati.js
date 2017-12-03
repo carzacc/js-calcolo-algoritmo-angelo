@@ -90,13 +90,13 @@ var failista = function (g, tipo) {
         divtasti.appendChild(tastoreset);
         let testotasto = document.createTextNode("Resetta tutto");
         tastoreset.appendChild(testotasto);
+        tastoreset.onclick = function () {
+            let parent = document.getElementById("Risultati");
+            parent.removeChild(lista);
+            parent.removeChild(titolorisultati);
+            divtasti.removeChild(tastoreset);
+            parent.removeChild(accapo);
+            indicatorezona.style.display = 'visible';
+        };
     }).call(this);
-};
-tastoreset.onclick = function () {
-    let parent = document.getElementById("Risultati");
-    parent.removeChild(lista);
-    parent.removeChild(titolorisultati);
-    divtasti.removeChild(tastoreset);
-    parent.removeChild(accapo);
-    indicatorezona.style.display = 'visible';
 };
