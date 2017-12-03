@@ -46,14 +46,6 @@ var avviaprogramma = function () {
     accapo = risultati.appendChild(document.createElement('br'));
     failista(giornata, tipoclassifica());
     console.log("finita funzione");
-    tastoreset.onclick = function () {
-        let parent = document.getElementById("Risultati");
-        parent.removeChild(lista);
-        parent.removeChild(titolorisultati);
-        divtasti.removeChild(tastoreset);
-        parent.removeChild(accapo);
-        indicatorezona.style.display = 'visible';
-    };
 };
 var sveglia = function () {
     $.get("http://algorest.carzacc.info", function (a) {
@@ -99,4 +91,12 @@ var failista = function (g, tipo) {
         let testotasto = document.createTextNode("Resetta tutto");
         tastoreset.appendChild(testotasto);
     }).call(this);
+};
+tastoreset.onclick = function () {
+    let parent = document.getElementById("Risultati");
+    parent.removeChild(lista);
+    parent.removeChild(titolorisultati);
+    divtasti.removeChild(tastoreset);
+    parent.removeChild(accapo);
+    indicatorezona.style.display = 'visible';
 };
