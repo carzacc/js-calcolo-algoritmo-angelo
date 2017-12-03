@@ -1,3 +1,4 @@
+'use strict';
 /*
     Copyright (C) 2017 carzacc
     This file is part of classifica-serie-a-alternativa.
