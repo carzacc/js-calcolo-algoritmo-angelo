@@ -76,6 +76,7 @@ function prelevadati(g) {
     let dati;
     $.getJSON("http://algorest.carzacc.info/?g=" + g, function (algoritmo) {
         console.log(algoritmo);
+        dati = algoritmo;
     });
     return dati;
 }

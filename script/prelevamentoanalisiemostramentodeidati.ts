@@ -12,7 +12,7 @@
     You should have received a copy of the GNU General Public License
     along with classifica-serie-a-alternativa.  If not, see <http://www.gnu.org/licenses/>.
 */
-var avviaprogramma = function () {
+var avviaprogramma = function () : void {
   let giornata: number;
   if ((<HTMLInputElement>document.getElementById('giornata15')).checked) giornata = 15;
   if ((<HTMLInputElement>document.getElementById('giornata14')).checked) giornata = 14;
@@ -32,7 +32,7 @@ var avviaprogramma = function () {
   let divtasti = document.getElementById('tasti');
   console.log("Avviata funzione avviaprogramma()");
   console.log("if finiti");
-  let risultati = (<HTMLInputElement>document.getElementById("Risultati"));
+  let risultati : HTMLInputElement = (<HTMLInputElement>document.getElementById("Risultati"));
   console.log("dopogetelement");
   let titolorisultati = risultati.appendChild(document.createElement('h1'));
   titolorisultati.appendChild(document.createTextNode("RISULTATI:"));
@@ -55,7 +55,7 @@ var avviaprogramma = function () {
     indicatorezona.style.display = 'visible';
   }
 }
-var sveglia = function ()  {
+var sveglia = function () : void  {
   $.get("http://algorest.carzacc.info", function(a)  {
     console.log("Svegliato sito");
   });
@@ -64,11 +64,12 @@ function prelevadati (g)  {
   let dati;
     $.getJSON( "http://algorest.carzacc.info/?g="+g, function( algoritmo ) {
       console.log(algoritmo);
+      dati = algoritmo;
     });
   return dati;
 }
 
-var tipoclassifica = function() {
+var tipoclassifica = function(): string {
   let Alt = (<HTMLInputElement>document.getElementById("alt")).checked;
   let Trad = (<HTMLInputElement>document.getElementById("trad")).checked;
   let Somma = (<HTMLInputElement>document.getElementById("somma")).checked;
@@ -78,9 +79,9 @@ var tipoclassifica = function() {
 }
 
 var failista = function (squadre) {
-  let punti = Array(20);
+  let punti : string[] = Array(20);
   console.log("dentro lista");
-  let tipo = tipoclassifica();
+  let tipo : string = tipoclassifica();
   for (let i=0; i<punti.length; i++)  {
     if (tipo == "Alt") punti[i] = squadre[i].Alternativa;
     if (tipo == "Trad") punti[i] = squadre[i].Tradizionale;
@@ -90,9 +91,9 @@ var failista = function (squadre) {
   let lista = document.createElement("ul");
   for (var i = 0; i < punti.length; i++) {
     let elemento = document.createElement('li');
-    elemento.appendChild(document.createTextNode(squadre[i].Squadra));
+    elemento.appendChild( document.createTextNode( squadre[i].Squadra ) );
     elemento.appendChild(document.createTextNode(": "));
-    elemento.appendChild(document.createTextNode(punti[i]));
+    elemento.appendChild(document.createTextNode( punti[i] ) );
     lista.appendChild(elemento);
   }
   return lista;
