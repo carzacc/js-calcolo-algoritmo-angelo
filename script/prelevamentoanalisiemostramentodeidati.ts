@@ -12,6 +12,14 @@
     You should have received a copy of the GNU General Public License
     along with classifica-serie-a-alternativa.  If not, see <http://www.gnu.org/licenses/>.
 */
+var lista : HTMLUListElement;
+var divtasti : HTMLInputElement = (<HTMLInputElement>document.getElementById('tasti'));
+var indicatorezona: HTMLElement = document.getElementById('indicatorezona');
+var risultati : HTMLInputElement = (<HTMLInputElement>document.getElementById("Risultati"));
+var titolorisultati: Node;
+var tastoreset: HTMLButtonElement;
+var accapo: Node;
+
 var avviaprogramma = function () : void {
   let giornata: number;
   if ((<HTMLInputElement>document.getElementById('giornata15')).checked) giornata = 15;
@@ -26,28 +34,19 @@ var avviaprogramma = function () : void {
   if ((<HTMLInputElement>document.getElementById('giornata6')).checked) giornata = 6;
   if ((<HTMLInputElement>document.getElementById('giornata5')).checked) giornata = 5;
   if ((<HTMLInputElement>document.getElementById('giornata4')).checked) giornata = 4;
-  let indicatorezona = document.getElementById('indicatorezona');
   indicatorezona.style.display = 'none';
-  let divrisultati = document.getElementById('Risultati');
-  let divtasti = document.getElementById('tasti');
   console.log("Avviata funzione avviaprogramma()");
   console.log("if finiti");
-  let risultati : HTMLInputElement = (<HTMLInputElement>document.getElementById("Risultati"));
   console.log("dopogetelement");
-  let titolorisultati = risultati.appendChild(document.createElement('h1'));
+  titolorisultati = risultati.appendChild(document.createElement('h1'));
   titolorisultati.appendChild(document.createTextNode("RISULTATI:"));
-  let accapo = risultati.appendChild(document.createElement('br'));
-  let tastoreset;
-  (function creatastoreset() {
-    tastoreset = document.createElement('button');
-    divtasti.appendChild(tastoreset);
-    let testotasto = document.createTextNode("Resetta tutto");
-    tastoreset.appendChild(testotasto);
-  }).call(this);
-  let lista = risultati.appendChild(failista(giornata));
+  accapo = risultati.appendChild(document.createElement('br'));
+
+
+  failista(giornata,tipoclassifica());
   console.log("finita funzione");
   tastoreset.onclick = function () {
-    let parent = (<HTMLInputElement>document.getElementById("Risultati"));
+    let parent: HTMLInputElement = (<HTMLInputElement>document.getElementById("Risultati"));
     parent.removeChild(lista);
     parent.removeChild(titolorisultati);
     divtasti.removeChild(tastoreset);
@@ -70,28 +69,32 @@ var tipoclassifica = function(): string {
   if(Somma) return "Somma";
 }
 
-var failista = function (g) {
-  let squadre;
-    $.getJSON( "http://algorest.carzacc.info/?g="+g, function( algoritmo ) {
-      console.log(algoritmo);
-      squadre = algoritmo;
-    });
-  let punti : string[] = Array(20);
-  console.log("dentro lista");
-  let tipo : string = tipoclassifica();
-  for (let i=0; i<punti.length; i++)  {
-    if (tipo == "Alt") punti[i] = squadre[i].Alternativa;
-    if (tipo == "Trad") punti[i] = squadre[i].Tradizionale;
-    if (tipo == "Somma") punti[i] = squadre[i].Somma;
-  }
+var failista = function (g, tipo): void {
+    $.getJSON( "http://algorest.carzacc.info/?g="+g, function( squadre ) {
+      console.log(squadre);
+      let punti : string[] = Array(20);
+      console.log("dentro lista");
+      for (let i=0; i<punti.length; i++)  {
+        if (tipo == "Alt") punti[i] = squadre[i].Alternativa;
+        if (tipo == "Trad") punti[i] = squadre[i].Tradizionale;
+        if (tipo == "Somma") punti[i] = squadre[i].Somma;
+      }
 
-  let lista = document.createElement("ul");
-  for (var i = 0; i < punti.length; i++) {
-    let elemento = document.createElement('li');
-    elemento.appendChild( document.createTextNode( squadre[i].Squadra ) );
-    elemento.appendChild(document.createTextNode(": "));
-    elemento.appendChild(document.createTextNode( punti[i] ) );
-    lista.appendChild(elemento);
-  }
-  return lista;
+      lista = document.createElement("ul");
+      for (var i = 0; i < punti.length; i++) {
+        let elemento = document.createElement('li');
+        elemento.appendChild( document.createTextNode( squadre[i].Squadra ) );
+        elemento.appendChild(document.createTextNode(": "));
+        elemento.appendChild(document.createTextNode( punti[i] ) );
+        let listatemp;
+        listatemp.appendChild(elemento);
+        let lista: Node = risultati.appendChild(listatemp);
+      }
+    });
+    (function creatastoreset() {
+      tastoreset = document.createElement('button');
+      divtasti.appendChild(tastoreset);
+      let testotasto : Text = document.createTextNode("Resetta tutto");
+      tastoreset.appendChild(testotasto);
+    }).call(this);
 };
