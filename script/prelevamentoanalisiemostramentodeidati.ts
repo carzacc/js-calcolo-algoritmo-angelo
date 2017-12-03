@@ -85,7 +85,7 @@ var failista = function (g, tipo): void {
       tastoreset.appendChild(testotasto);
       tastoreset.onclick = function () {
         let parent: HTMLInputElement = (<HTMLInputElement>document.getElementById("Risultati"));
-        parent.removeChild(lista);
+        lista.parentNode.removeChild(lista);
         parent.removeChild(titolorisultati);
         divtasti.removeChild(tastoreset);
         parent.removeChild(accapo);
