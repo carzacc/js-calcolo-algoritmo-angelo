@@ -86,9 +86,7 @@ var failista = function (g, tipo): void {
         elemento.appendChild( document.createTextNode( squadre[i].Squadra ) );
         elemento.appendChild(document.createTextNode(": "));
         elemento.appendChild(document.createTextNode( punti[i] ) );
-        let listatemp;
-        listatemp.appendChild(elemento);
-        let lista: Node = risultati.appendChild(listatemp);
+        let lista: Node = risultati.appendChild(elemento);
       }
     });
     (function creatastoreset() {
