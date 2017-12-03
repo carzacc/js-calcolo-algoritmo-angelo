@@ -12,7 +12,7 @@
     You should have received a copy of the GNU General Public License
     along with classifica-serie-a-alternativa.  If not, see <http://www.gnu.org/licenses/>.
 */
-var lista : HTMLUListElement;
+var lista: Node;
 var divtasti : HTMLInputElement = (<HTMLInputElement>document.getElementById('tasti'));
 var indicatorezona: HTMLElement = document.getElementById('indicatorezona');
 var risultati : HTMLInputElement = (<HTMLInputElement>document.getElementById("Risultati"));
@@ -82,7 +82,7 @@ var failista = function (g, tipo): void {
         elemento.appendChild( document.createTextNode( squadre[i].Squadra ) );
         elemento.appendChild(document.createTextNode(": "));
         elemento.appendChild(document.createTextNode( punti[i] ) );
-        let lista: Node = risultati.appendChild(elemento);
+        lista = risultati.appendChild(elemento);
       }
     });
     (function creatastoreset() {

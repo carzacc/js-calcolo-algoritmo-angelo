@@ -90,7 +90,7 @@ var failista = function (g, tipo) {
             elemento.appendChild(document.createTextNode(squadre[i].Squadra));
             elemento.appendChild(document.createTextNode(": "));
             elemento.appendChild(document.createTextNode(punti[i]));
-            let lista = risultati.appendChild(elemento);
+            lista = risultati.appendChild(elemento);
         }
     });
     (function creatastoreset() {
