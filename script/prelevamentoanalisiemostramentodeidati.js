@@ -14,6 +14,14 @@
 */
 var avviaprogramma = function () {
     let giornata;
+    if (document.getElementById('giornata15').checked)
+        giornata = 15;
+    if (document.getElementById('giornata14').checked)
+        giornata = 14;
+    if (document.getElementById('giornata13').checked)
+        giornata = 13;
+    if (document.getElementById('giornata13').checked)
+        giornata = 12;
     if (document.getElementById('giornata11').checked)
         giornata = 11;
     if (document.getElementById('giornata10').checked)
