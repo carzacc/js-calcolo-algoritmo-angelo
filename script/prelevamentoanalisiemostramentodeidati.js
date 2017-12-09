@@ -1,3 +1,4 @@
+'use strict';
 /*
     Copyright (C) 2017 carzacc
     This file is part of classifica-serie-a-alternativa.
@@ -12,6 +13,14 @@
     You should have received a copy of the GNU General Public License
     along with classifica-serie-a-alternativa.  If not, see <http://www.gnu.org/licenses/>.
 */
+var elemento;
+var lista;
+var divtasti = document.getElementById('tasti');
+var indicatorezona = document.getElementById('indicatorezona');
+var risultati = document.getElementById("Risultati");
+var titolorisultati;
+var tastoreset;
+var accapo;
 var avviaprogramma = function () {
     let giornata;
     if (document.getElementById('giornata15').checked)
@@ -38,47 +47,21 @@ var avviaprogramma = function () {
         giornata = 5;
     if (document.getElementById('giornata4').checked)
         giornata = 4;
-    let indicatorezona = document.getElementById('indicatorezona');
     indicatorezona.style.display = 'none';
-    let divrisultati = document.getElementById('Risultati');
-    let divtasti = document.getElementById('tasti');
     console.log("Avviata funzione avviaprogramma()");
     console.log("if finiti");
-    let risultati = document.getElementById("Risultati");
     console.log("dopogetelement");
-    let titolorisultati = risultati.appendChild(document.createElement('h1'));
+    titolorisultati = risultati.appendChild(document.createElement('h1'));
     titolorisultati.appendChild(document.createTextNode("RISULTATI:"));
-    let accapo = risultati.appendChild(document.createElement('br'));
-    let tastoreset;
-    (function creatastoreset() {
-        tastoreset = document.createElement('button');
-        divtasti.appendChild(tastoreset);
-        let testotasto = document.createTextNode("Resetta tutto");
-        tastoreset.appendChild(testotasto);
-    }).call(this);
-    let lista = risultati.appendChild(failista(prelevadati(giornata)));
+    accapo = risultati.appendChild(document.createElement('br'));
+    failista(giornata, tipoclassifica());
     console.log("finita funzione");
-    tastoreset.onclick = function () {
-        let parent = document.getElementById("Risultati");
-        parent.removeChild(lista);
-        parent.removeChild(titolorisultati);
-        divtasti.removeChild(tastoreset);
-        parent.removeChild(accapo);
-        indicatorezona.style.display = 'visible';
-    };
 };
 var sveglia = function () {
     $.get("http://algorest.carzacc.info", function (a) {
         console.log("Svegliato sito");
     });
 };
-function prelevadati(g) {
-    let dati;
-    $.getJSON("http://algorest.carzacc.info/?g=" + g, function (algoritmo) {
-        console.log(algoritmo);
-    });
-    return dati;
-}
 var tipoclassifica = function () {
     let Alt = document.getElementById("alt").checked;
     let Trad = document.getElementById("trad").checked;
@@ -90,25 +73,41 @@ var tipoclassifica = function () {
     if (Somma)
         return "Somma";
 };
-var failista = function (squadre) {
-    let punti = Array(20);
-    console.log("dentro lista");
-    let tipo = tipoclassifica();
-    for (let i = 0; i < punti.length; i++) {
-        if (tipo == "Alt")
-            punti[i] = squadre[i].Alternativa;
-        if (tipo == "Trad")
-            punti[i] = squadre[i].Tradizionale;
-        if (tipo == "Somma")
-            punti[i] = squadre[i].Somma;
-    }
-    let lista = document.createElement("ul");
-    for (var i = 0; i < punti.length; i++) {
-        let elemento = document.createElement('li');
-        elemento.appendChild(document.createTextNode(squadre[i].Squadra));
-        elemento.appendChild(document.createTextNode(": "));
-        elemento.appendChild(document.createTextNode(punti[i]));
-        lista.appendChild(elemento);
-    }
-    return lista;
+var failista = function (g, tipo) {
+    $.getJSON("http://algorest.carzacc.info/?g=" + g, function (squadre) {
+        console.log(squadre);
+        let punti = Array(20);
+        console.log("dentro lista");
+        for (let i = 0; i < punti.length; i++) {
+            if (tipo == "Alt")
+                punti[i] = squadre[i].Alternativa;
+            if (tipo == "Trad")
+                punti[i] = squadre[i].Tradizionale;
+            if (tipo == "Somma")
+                punti[i] = squadre[i].Somma;
+        }
+        let listatemp = document.createElement("ul");
+        for (var i = 0; i < punti.length; i++) {
+            elemento = document.createElement('li');
+            elemento.appendChild(document.createTextNode(squadre[i].Squadra));
+            elemento.appendChild(document.createTextNode(": "));
+            elemento.appendChild(document.createTextNode(punti[i]));
+            listatemp.appendChild(elemento);
+        }
+        lista = risultati.appendChild(listatemp);
+    });
+    (function creatastoreset() {
+        tastoreset = document.createElement('button');
+        divtasti.appendChild(tastoreset);
+        let testotasto = document.createTextNode("Resetta tutto");
+        tastoreset.appendChild(testotasto);
+        tastoreset.onclick = function () {
+            let parent = document.getElementById("Risultati");
+            parent.removeChild(titolorisultati);
+            divtasti.removeChild(tastoreset);
+            parent.removeChild(accapo);
+            risultati.removeChild(lista);
+            indicatorezona.style.display = 'visible';
+        };
+    }).call(this);
 };
