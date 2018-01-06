@@ -54,15 +54,19 @@ var failista = function (g) {
         console.log("dentro lista");
         var tabella = document.getElementById("classifica");
         for (var i = 0; i < squadre.length; i++) {
+            let posizionecorrente = i + 1;
             var fila = document.createElement('tr');
+            var cellapos = document.createElement('td');
             var cellanome = document.createElement('td');
             var cellaalt = document.createElement('td');
             var cellatrad = document.createElement('td');
             var cellasomma = document.createElement('td');
-            cellanome.appendChild(document.createTextNode(squadre[i].nomesquadra));
-            cellaalt.appendChild(document.createTextNode(squadre[i].punti));
-            cellatrad.appendChild(document.createTextNode(squadre[i].puntiTrad));
-            cellasomma.appendChild(document.createTextNode(squadre[i].puntiTrad + squadre[i].punti));
+            cellapos.appendChild(document.createTextNode(posizionecorrente.toString()));
+            cellanome.appendChild(document.createTextNode(squadre[i].Squadra));
+            cellaalt.appendChild(document.createTextNode(squadre[i].Alternativa));
+            cellatrad.appendChild(document.createTextNode(squadre[i].Tradizionale));
+            cellasomma.appendChild(document.createTextNode(squadre[i].Somma));
+            fila.appendChild(cellapos);
             fila.appendChild(cellanome);
             fila.appendChild(cellaalt);
             fila.appendChild(cellatrad);
