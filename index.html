@@ -22,7 +22,7 @@
   </script>
   </head>
 
-  <body>
+  <body onload="sveglia()">
     <header>
       <nav class="navbar navbar-expand-md navbar-inverse fixed-top bg-light navbar-light">
         <a class="navbar-brand" href="#">CLASSIFICA SERIE A ALTERNATIVA</a>
@@ -109,6 +109,7 @@
           <h1>Siamo arrivati alla giornata 15 con l'algoritmo</h1>
 
           <section class="row text-center placeholders">
+            <div id="messaggioresetta">Devi resettare prima di riavviare i calcoli</div>
             <div class="col-6 col-sm-3 placeholder">
               <a onclick="avviaprogramma()"><img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
               <h4>Avvia calcoli</h4></a>
