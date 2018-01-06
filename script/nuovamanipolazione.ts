@@ -20,6 +20,8 @@ var risultati : HTMLInputElement = (<HTMLInputElement>document.getElementById("R
 var titolorisultati: Node;
 var tastoreset: HTMLButtonElement;
 var accapo: Node;
+var eseguito: Boolean = false;
+var mes: HTMLDivElement = document.getElementById("messaggioresetta");
 
 var avviaprogramma = function () : void {
   let giornata: number;
@@ -44,40 +46,50 @@ var sveglia = function () : void  {
   $.get("http://algorest.carzacc.info/?g=", function(a)  {
     console.log("Svegliato sito");
   });
+  mes.hide();
 }
 
 
 var failista = function (g): void {
+    if (!eseguito)  {
     $.getJSON( "http://algorest.carzacc.info/?g="+g, function( squadre ) {
       console.log(squadre);
       console.log("dentro lista");
 
-      var tabella = document.getElementById("classifica")
-      for (var i = 0; i < squadre.length; i++) {
-        let posizionecorrente = i+1;
-        var fila: HTMLTableRowElement = document.createElement('tr');
-        var cellapos: HTMLTableDataCellElement = document.createElement('td');
-        var cellanome: HTMLTableDataCellElement = document.createElement('td');
-        var cellaalt: HTMLTableDataCellElement = document.createElement('td');
-        var cellatrad: HTMLTableDataCellElement = document.createElement('td');
-        var cellasomma: HTMLTableDataCellElement = document.createElement('td');
-        cellapos.appendChild(document.createTextNode(posizionecorrente.toString()));
-        cellanome.appendChild(document.createTextNode(squadre[i].Squadra));
-        cellaalt.appendChild(document.createTextNode(squadre[i].Alternativa));
-        cellatrad.appendChild(document.createTextNode(squadre[i].Tradizionale));
-        cellasomma.appendChild(document.createTextNode(squadre[i].Somma) );
-        fila.appendChild(cellapos);
-        fila.appendChild(cellanome);
-        fila.appendChild(cellaalt);
-        fila.appendChild(cellatrad);
-        fila.appendChild(cellasomma);
-        tabella.appendChild(fila);
+      var tabella = document.getElementById("classifica");
+        for (var i = 0; i < squadre.length; i++) {
+            let posizionecorrente = i+1;
+            var fila: HTMLTableRowElement = document.createElement('tr');
+            var cellapos: HTMLTableDataCellElement = document.createElement('td');
+            var cellanome: HTMLTableDataCellElement = document.createElement('td');
+            var cellaalt: HTMLTableDataCellElement = document.createElement('td');
+            var cellatrad: HTMLTableDataCellElement = document.createElement('td');
+            var cellasomma: HTMLTableDataCellElement = document.createElement('td');
+            cellapos.appendChild(document.createTextNode(posizionecorrente.toString()));
+            cellanome.appendChild(document.createTextNode(squadre[i].Squadra));
+            cellaalt.appendChild(document.createTextNode(squadre[i].Alternativa));
+            cellatrad.appendChild(document.createTextNode(squadre[i].Tradizionale));
+            cellasomma.appendChild(document.createTextNode(squadre[i].Somma) );
+            fila.appendChild(cellapos);
+            fila.appendChild(cellanome);
+            fila.appendChild(cellaalt);
+            fila.appendChild(cellatrad);
+            fila.appendChild(cellasomma);
+            tabella.appendChild(fila);
+          }
+        });
+        eseguito=true;
+      } else  {
+          mes.show();
+          var messaggio = new Popper(document.getElementById("avvio"), mes, {
+          placement: 'bottom'
+        });
       }
-    });
-};
+}
 function resetta()  {
   var parent = document.getElementById("classifica");
   while (parent.firstChild) {
       parent.removeChild(parent.firstChild);
   }
+  eseguito=false;
 }
