@@ -21,7 +21,6 @@ var titolorisultati: Node;
 var tastoreset: HTMLButtonElement;
 var accapo: Node;
 var eseguito: Boolean = false;
-var mes: HTMLDivElement = document.getElementById("messaggioresetta");
 
 var avviaprogramma = function () : void {
   let giornata: number;
@@ -46,7 +45,6 @@ var sveglia = function () : void  {
   $.get("http://algorest.carzacc.info/?g=", function(a)  {
     console.log("Svegliato sito");
   });
-  mes.hide();
 }
 
 
@@ -79,11 +77,12 @@ var failista = function (g): void {
           }
         });
         eseguito=true;
-      } else  {
-          mes.show();
-          var messaggio = new Popper(document.getElementById("avvio"), mes, {
-          placement: 'bottom'
-        });
+      } else {
+        let autoreset: HTMLInputElement = <HTMLInputElement> document.getElementById("autoreset");
+        if(autoreset.checked == true) {
+          resetta()
+          avviaprogramma()
+        }
       }
 }
 function resetta()  {
