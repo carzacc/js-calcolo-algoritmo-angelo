@@ -75,3 +75,9 @@ var failista = function (g): void {
       }
     });
 };
+function resetta()  {
+  var parent = document.getElementById("classifica");
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
