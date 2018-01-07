@@ -21,26 +21,23 @@ var titolorisultati;
 var tastoreset;
 var accapo;
 var eseguito = false;
+var controllaradio = true;
+var giornata;
 var avviaprogramma = function () {
-    let giornata;
-    if (document.getElementById('giornata15').checked)
-        giornata = 15;
-    if (document.getElementById('giornata14').checked)
-        giornata = 14;
-    if (document.getElementById('giornata13').checked)
-        giornata = 13;
-    if (document.getElementById('giornata13').checked)
-        giornata = 12;
-    if (document.getElementById('giornata11').checked)
-        giornata = 11;
-    if (document.getElementById('giornata10').checked)
-        giornata = 10;
-    /*if ((<HTMLInputElement>document.getElementById('giornata9')).checked) giornata = 9;
-    if ((<HTMLInputElement>document.getElementById('giornata8')).checked) giornata = 8;
-    if ((<HTMLInputElement>document.getElementById('giornata7')).checked) giornata = 7;
-    if ((<HTMLInputElement>document.getElementById('giornata6')).checked) giornata = 6;
-    if ((<HTMLInputElement>document.getElementById('giornata5')).checked) giornata = 5;
-    if ((<HTMLInputElement>document.getElementById('giornata4')).checked) giornata = 4;*/
+    if (controllaradio) {
+        if (document.getElementById('giornata15').checked)
+            giornata = 15;
+        if (document.getElementById('giornata14').checked)
+            giornata = 14;
+        if (document.getElementById('giornata13').checked)
+            giornata = 13;
+        if (document.getElementById('giornata13').checked)
+            giornata = 12;
+        if (document.getElementById('giornata11').checked)
+            giornata = 11;
+        if (document.getElementById('giornata10').checked)
+            giornata = 10;
+    }
     failista(giornata);
     console.log("finita funzione");
 };
@@ -80,10 +77,8 @@ var failista = function (g) {
     }
     else {
         let autoreset = document.getElementById("autoreset");
-        if (autoreset.checked == true) {
-            resetta();
-            avviaprogramma();
-        }
+        resetta();
+        avviaprogramma();
     }
 };
 function resetta() {

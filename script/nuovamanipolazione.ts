@@ -21,7 +21,7 @@ var titolorisultati: Node;
 var tastoreset: HTMLButtonElement;
 var accapo: Node;
 var eseguito: Boolean = false;
-var controllaradio: Bollean = true;
+var controllaradio: Boolean = true;
 var giornata: number;
 
 var avviaprogramma = function () : void {
