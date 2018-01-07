@@ -106,21 +106,23 @@
         </nav>
 
         <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
-          <h1>Siamo arrivati alla giornata 15 con l'algoritmo</h1>
-
+          <h1>Algoritmo aggiornato alla giornata 15</h1>
+          <div class="dropdown">
+           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Scegli giornata
+           <span class="caret"></span></button>
+           <ul class="dropdown-menu">
+             <a class="btn" href="#" role="button" onclick="impostaGiornata(parseInt(this.id))" id="15">Button1</a><br>
+             <a class="btn" href="#" role="button" onclick="impostaGiornata(parseInt(this.id))" id="14">Button1</a><br>
+             <a class="btn" href="#" role="button" onclick="impostaGiornata(parseInt(this.id))" id="13">Button1</a><br>
+          </ul>
+          </div>
           <section class="row text-center placeholders">
-            <div class="col-6 col-sm-3"> <label class="checkbox-inline"><input id="autoreset" type="checkbox" value="">Resetta automaticamente</label></div>
             <div class="col-6 col-sm-3">
-              <a onclick="avviaprogramma()"><img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Avvia calcoli</h4></a>
-            </div>
-            <div class="col-6 col-sm-3">
-              <a onclick="resetta()"><img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Resetta</h4></a>
+              <button type="button" class="btn btn-primary" onclick="avviaprogramma()">Genera classifiche</button>
             </div>
           </section>
 
-          <h2>Section title</h2>
+          <h2>Classifica</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
