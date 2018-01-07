@@ -23,6 +23,10 @@ var accapo;
 var eseguito = false;
 var controllaradio = true;
 var giornata;
+var impostaGiornata = function (g) {
+    giornata = g;
+    controllaradio = false;
+};
 var avviaprogramma = function () {
     if (controllaradio) {
         if (document.getElementById('giornata15').checked)

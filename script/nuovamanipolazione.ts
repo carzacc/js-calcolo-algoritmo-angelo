@@ -24,6 +24,11 @@ var eseguito: Boolean = false;
 var controllaradio: Boolean = true;
 var giornata: number;
 
+var impostaGiornata = function(g): void {
+  giornata=g;
+  controllaradio=false;
+}
+
 var avviaprogramma = function () : void {
   if(controllaradio)  {
     if ((<HTMLInputElement>document.getElementById('giornata15')).checked) giornata = 15;
