@@ -13,13 +13,6 @@
     You should have received a copy of the GNU General Public License
     along with classifica-serie-a-alternativa.  If not, see <http://www.gnu.org/licenses/>.
 */
-var lista: Node;
-var divtasti : HTMLInputElement = (<HTMLInputElement>document.getElementById('tasti'));
-var indicatorezona: HTMLElement = document.getElementById('indicatorezona');
-var risultati : HTMLInputElement = (<HTMLInputElement>document.getElementById("Risultati"));
-var titolorisultati: Node;
-var tastoreset: HTMLButtonElement;
-var accapo: Node;
 var eseguito: Boolean = false;
 var controllaradio: Boolean = true;
 var giornata: number;

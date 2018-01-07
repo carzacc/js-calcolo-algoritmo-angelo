@@ -1,3 +1,7 @@
+.dropdown {
+    margin-top: 50px;
+    z-index: auto;
+}
 /*
  * Base structure
  */
