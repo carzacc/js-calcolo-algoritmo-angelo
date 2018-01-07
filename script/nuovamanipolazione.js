@@ -13,13 +13,6 @@
     You should have received a copy of the GNU General Public License
     along with classifica-serie-a-alternativa.  If not, see <http://www.gnu.org/licenses/>.
 */
-var lista;
-var divtasti = document.getElementById('tasti');
-var indicatorezona = document.getElementById('indicatorezona');
-var risultati = document.getElementById("Risultati");
-var titolorisultati;
-var tastoreset;
-var accapo;
 var eseguito = false;
 var controllaradio = true;
 var giornata;
@@ -35,7 +28,7 @@ var avviaprogramma = function () {
             giornata = 14;
         if (document.getElementById('giornata13').checked)
             giornata = 13;
-        if (document.getElementById('giornata13').checked)
+        if (document.getElementById('giornata12').checked)
             giornata = 12;
         if (document.getElementById('giornata11').checked)
             giornata = 11;
