@@ -15,7 +15,7 @@
 */
 var eseguito: Boolean = false;
 var controllaradio: Boolean = true;
-var giornata: number;
+var giornata: number = 40;
 
 var impostaGiornata = function(g): void {
   giornata=g;
