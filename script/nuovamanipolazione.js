@@ -22,6 +22,16 @@ var impostaGiornata = function (g) {
 };
 var avviaprogramma = function () {
     if (controllaradio) {
+        if (document.getElementById('giornata20').checked)
+            giornata = 20;
+        if (document.getElementById('giornata19').checked)
+            giornata = 19;
+        if (document.getElementById('giornata18').checked)
+            giornata = 18;
+        if (document.getElementById('giornata17').checked)
+            giornata = 17;
+        if (document.getElementById('giornata16').checked)
+            giornata = 16;
         if (document.getElementById('giornata15').checked)
             giornata = 15;
         if (document.getElementById('giornata14').checked)

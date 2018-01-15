@@ -24,6 +24,11 @@ var impostaGiornata = function(g): void {
 
 var avviaprogramma = function () : void {
   if(controllaradio)  {
+    if ((<HTMLInputElement>document.getElementById('giornata20')).checked) giornata = 20;
+    if ((<HTMLInputElement>document.getElementById('giornata19')).checked) giornata = 19;
+    if ((<HTMLInputElement>document.getElementById('giornata18')).checked) giornata = 18;
+    if ((<HTMLInputElement>document.getElementById('giornata17')).checked) giornata = 17;
+    if ((<HTMLInputElement>document.getElementById('giornata16')).checked) giornata = 16;
     if ((<HTMLInputElement>document.getElementById('giornata15')).checked) giornata = 15;
     if ((<HTMLInputElement>document.getElementById('giornata14')).checked) giornata = 14;
     if ((<HTMLInputElement>document.getElementById('giornata13')).checked) giornata = 13;
