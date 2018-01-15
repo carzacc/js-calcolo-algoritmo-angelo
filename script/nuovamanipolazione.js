@@ -15,7 +15,7 @@
 */
 var eseguito = false;
 var controllaradio = true;
-var giornata;
+var giornata = 40;
 var impostaGiornata = function (g) {
     giornata = g;
     controllaradio = false;
@@ -34,16 +34,6 @@ var avviaprogramma = function () {
             giornata = 16;
         if (document.getElementById('giornata15').checked)
             giornata = 15;
-        if (document.getElementById('giornata14').checked)
-            giornata = 14;
-        if (document.getElementById('giornata13').checked)
-            giornata = 13;
-        if (document.getElementById('giornata12').checked)
-            giornata = 12;
-        if (document.getElementById('giornata11').checked)
-            giornata = 11;
-        if (document.getElementById('giornata10').checked)
-            giornata = 10;
     }
     failista(giornata);
     console.log("finita funzione");
